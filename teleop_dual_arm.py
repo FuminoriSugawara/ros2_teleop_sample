@@ -41,6 +41,8 @@ def main(args=None):
     rclpy.init(args=args)
     
     joint_trajectory_publisher = JointTrajectoryPublisher()
+    #enable_joints = [0,1,2,3,4,5,6]
+    enable_joints = [0]
     
     print("Press 0-3 to change position, or 'q' to quit:")
     print("0: 0, 1: 100000, 2: 200000, 3: 300000, 6, 7, 8")
@@ -49,16 +51,43 @@ def main(args=None):
         key = getch()
         if key == '0':
             for i in range(14):
-                joint_trajectory_publisher.positions[i] = 0.0
+                if i in enable_joints:
+                    joint_trajectory_publisher.positions[i] = 0.0
         elif key == '1':
             for i in range(14):
-                joint_trajectory_publisher.positions[i] = 100000.0
+                if i in enable_joints:
+                    joint_trajectory_publisher.positions[i] = 100000.0
+
         elif key == '2':
             for i in range(14):
-                joint_trajectory_publisher.positions[i] = 200000.0
+                if i in enable_joints:
+                    joint_trajectory_publisher.positions[i] = 200000.0
+
         elif key == '3':
             for i in range(14):
-                joint_trajectory_publisher.positions[i] = 300000.0
+                if i in enable_joints:
+                    joint_trajectory_publisher.positions[i] = 300000.0
+        elif key == '4':
+            for i in range(14):
+                if i in enable_joints:
+                    joint_trajectory_publisher.positions[i] = 600000.0
+        elif key == '5':
+            for i in range(14):
+                if i in enable_joints:
+                    joint_trajectory_publisher.positions[i] = 900000.0
+        elif key == '6':
+            for i in range(14):
+                if i in enable_joints:
+                    joint_trajectory_publisher.positions[i] = 1200000.0
+        elif key == '7':
+            for i in range(14):
+                if i in enable_joints:
+                    joint_trajectory_publisher.positions[i] = 1500000.0
+        elif key == '8':
+            for i in range(14):
+                if i in enable_joints:
+                    joint_trajectory_publisher.positions[i] = 1800000.0
+
         elif key.lower() == 'q':
             break
         else:
